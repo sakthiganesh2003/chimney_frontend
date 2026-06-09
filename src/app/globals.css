@@ -31,53 +31,51 @@
 }
 
 :root {
-  --background: oklch(0.99 0.005 285);
-  --foreground: oklch(0.2 0.02 260);
+  --background: oklch(0.985 0.003 314);
+  --foreground: oklch(0.18 0.025 314);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 260);
+  --card-foreground: oklch(0.18 0.025 314);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 260);
-  
-  /* Rich Amber/Gold */
-  --primary: oklch(0.68 0.16 48);
+  --popover-foreground: oklch(0.18 0.025 314);
+
+  /* Soft Mauve / Purple #A47DAB */
+  --primary: oklch(0.606 0.083 314);
   --primary-foreground: oklch(0.99 0 0);
-  
-  --secondary: oklch(0.95 0.01 260);
-  --secondary-foreground: oklch(0.3 0.02 260);
-  --muted: oklch(0.96 0.01 260);
-  --muted-foreground: oklch(0.5 0.02 260);
-  --accent: oklch(0.95 0.01 260);
-  --accent-foreground: oklch(0.3 0.02 260);
-  --destructive: oklch(0.6 0.2 25);
-  --border: oklch(0.9 0.02 260);
-  --input: oklch(0.9 0.02 260);
-  --ring: oklch(0.68 0.16 48);
+
+  --secondary: oklch(0.95 0.012 314);
+  --secondary-foreground: oklch(0.3 0.02 314);
+  --muted: oklch(0.96 0.008 314);
+  --muted-foreground: oklch(0.52 0.018 314);
+  --accent: oklch(0.95 0.012 314);
+  --accent-foreground: oklch(0.3 0.02 314);
+  --destructive: oklch(0.6 0.22 25);
+  --border: oklch(0.89 0.012 314);
+  --input: oklch(0.89 0.012 314);
+  --ring: oklch(0.606 0.083 314);
   --radius: 0.75rem;
 }
 
 .dark {
-  /* Deep Navy/Charcoal */
-  --background: oklch(0.18 0.02 260);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.22 0.02 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.22 0.02 260);
-  --popover-foreground: oklch(0.98 0 0);
-  
-  /* Rich Amber/Gold */
-  --primary: oklch(0.68 0.16 48);
-  --primary-foreground: oklch(0.15 0.02 260);
-  
-  --secondary: oklch(0.28 0.02 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.28 0.02 260);
-  --muted-foreground: oklch(0.7 0.02 260);
-  --accent: oklch(0.28 0.02 260);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.6 0.2 25);
-  --border: oklch(0.3 0.02 260);
-  --input: oklch(0.3 0.02 260);
-  --ring: oklch(0.68 0.16 48);
+  --background: oklch(0.16 0.02 314);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.20 0.02 314);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.20 0.02 314);
+  --popover-foreground: oklch(0.97 0 0);
+
+  --primary: oklch(0.70 0.083 314);
+  --primary-foreground: oklch(0.15 0.02 314);
+
+  --secondary: oklch(0.26 0.018 314);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.26 0.018 314);
+  --muted-foreground: oklch(0.68 0.018 314);
+  --accent: oklch(0.26 0.018 314);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.6 0.22 25);
+  --border: oklch(0.30 0.018 314);
+  --input: oklch(0.30 0.018 314);
+  --ring: oklch(0.70 0.083 314);
 }
 
 @layer base {
@@ -93,134 +91,85 @@
   }
 }
 
-/* ===================== SMOOTH PAGE ENTRY ANIMATION ===================== */
+/* ===================== ANIMATIONS ===================== */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
-
-/* Loading progress bar */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 @keyframes progress {
   0%   { width: 0%; }
   30%  { width: 45%; }
   70%  { width: 75%; }
   100% { width: 100%; }
 }
-
-/* Skeleton shimmer */
 @keyframes shimmer {
   0%   { background-position: -400px 0; }
   100% { background-position: 400px 0; }
 }
-
-/* Slow spin for logo */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Slow pulse */
 @keyframes pulse-slow {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.7; transform: scale(1.05); }
+  50%       { opacity: 0.75; transform: scale(1.04); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
 /* ===================== UTILITY CLASSES ===================== */
-.animate-fadeInUp {
-  animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+.animate-fadeInUp    { animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fadeIn      { animation: fadeIn 0.4s ease both; }
+.animate-slideInLeft { animation: slideInLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-slideInRight{ animation: slideInRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-progress    { animation: progress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.animate-pulse-slow  { animation: pulse-slow 2.5s ease-in-out infinite; }
+.animate-float       { animation: float 3s ease-in-out infinite; }
 
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease both;
-}
+/* Staggered children */
+.animate-stagger > *:nth-child(1) { animation-delay:   0ms; }
+.animate-stagger > *:nth-child(2) { animation-delay:  90ms; }
+.animate-stagger > *:nth-child(3) { animation-delay: 180ms; }
+.animate-stagger > *:nth-child(4) { animation-delay: 270ms; }
+.animate-stagger > *:nth-child(5) { animation-delay: 360ms; }
+.animate-stagger > *:nth-child(6) { animation-delay: 450ms; }
 
-.animate-slideInLeft {
-  animation: slideInLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.animate-progress {
-  animation: progress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 3s linear infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 2.5s ease-in-out infinite;
-}
-
-/* Staggered children animation */
-.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
-.animate-stagger > *:nth-child(2) { animation-delay: 80ms; }
-.animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
-.animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
-.animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
-.animate-stagger > *:nth-child(6) { animation-delay: 400ms; }
-
-/* Skeleton shimmer effect */
+/* Skeleton shimmer */
 .skeleton {
   background: linear-gradient(
     90deg,
-    oklch(0.93 0.01 260) 25%,
-    oklch(0.97 0.005 260) 50%,
-    oklch(0.93 0.01 260) 75%
+    oklch(0.93 0.01 250) 25%,
+    oklch(0.97 0.005 250) 50%,
+    oklch(0.93 0.01 250) 75%
   );
   background-size: 400px 100%;
   animation: shimmer 1.5s infinite;
 }
 
-/* ===================== GLOBAL PAGE TRANSITION ===================== */
-main {
-  animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+/* ===================== PAGE TRANSITION ===================== */
+main { animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* ===================== PREMIUM SCROLLBAR ===================== */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: oklch(0.8 0.04 260);
-  border-radius: 999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.68 0.16 48);
-}
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: oklch(0.78 0.04 314); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: oklch(0.606 0.083 314); }
 
-/* ===================== SMOOTH TRANSITIONS ===================== */
-a, button {
-  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
+/* ===================== TRANSITIONS ===================== */
+a, button { transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
 
-/* Focus ring */
 *:focus-visible {
-  outline: 2px solid oklch(0.68 0.16 48);
+  outline: 2px solid oklch(0.606 0.083 314);
   outline-offset: 2px;
   border-radius: 4px;
 }

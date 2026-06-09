@@ -14,11 +14,10 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
   if (profile?.role === 'admin') redirect('/admin')
-  if (profile?.role === 'technician') redirect('/technician')
 
   const { data: bookings } = await supabase
     .from('bookings')
-    .select(`*, services ( name, price_estimate ), technician:profiles!technician_id ( full_name, phone )`)
+    .select(`*, services ( name, price_estimate ), technician:technicians!technician_ref_id ( name, phone )`)
     .eq('customer_id', user.id)
     .order('scheduled_date', { ascending: false })
 
@@ -149,11 +148,11 @@ export default async function DashboardPage() {
                       {booking.technician && (
                         <div className="mt-3 pt-3 border-t border-border/50 flex items-center gap-2.5">
                           <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 font-bold text-xs">
-                            {booking.technician.full_name?.charAt(0)}
+                            {booking.technician.name?.charAt(0)}
                           </div>
                           <div>
                             <div className="text-xs text-muted-foreground">Assigned Technician</div>
-                            <div className="text-sm font-semibold">{booking.technician.full_name}</div>
+                            <div className="text-sm font-semibold">{booking.technician.name}</div>
                           </div>
                           {booking.technician.phone && (
                             <span className="ml-auto text-xs text-muted-foreground">{booking.technician.phone}</span>
@@ -165,7 +164,7 @@ export default async function DashboardPage() {
                         <div className="mt-2 pt-3 border-t border-border/50">
                           <Link
                             href={`/dashboard/feedback/${booking.id}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-semibold transition-colors border border-amber-200"
                           >
                             ★ Submit Feedback & Rating
                           </Link>

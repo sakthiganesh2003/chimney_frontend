@@ -2,36 +2,24 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Flame } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Flame, Menu, X } from 'lucide-react'
 import { buttonVariants } from './ui/button'
 import { createClient } from '@/utils/supabase/client'
+import { cn } from '@/lib/utils'
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [user, setUser] = useState<any>(null)
   const [profile, setProfile] = useState<any>(null)
   const supabase = createClient()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     const fetchUser = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
       if (user) {
-        const { data: profileData } = await supabase
-          .from('profiles')
-          .select('full_name, role')
-          .eq('id', user.id)
-          .single()
-        setProfile(profileData)
+        const { data } = await supabase.from('profiles').select('full_name, role').eq('id', user.id).single()
+        setProfile(data)
       }
     }
     fetchUser()
@@ -43,79 +31,121 @@ export function Navbar() {
     return '/dashboard'
   }
 
+  const navLinks = [
+    { label: 'Services', href: '/#services' },
+    { label: 'How It Works', href: '/#how-it-works' },
+    { label: 'Reviews', href: '/#reviews' },
+  ]
+
   return (
-    <header 
-      className={cn(
-        "fixed top-0 inset-x-0 z-50 w-full transition-all duration-300",
-        scrolled 
-          ? "bg-background/95 backdrop-blur-md shadow-sm py-3 border-b border-border/50" 
-          : "bg-transparent py-5"
-      )}
-    >
-      <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="bg-primary p-2 rounded-lg group-hover:scale-105 transition-transform">
-            <Flame className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className={cn(
-            "text-xl font-extrabold tracking-tight transition-colors",
-            scrolled ? "text-foreground" : "text-white drop-shadow-md"
-          )}>
-            ChimneyCare
-          </span>
-        </Link>
-        
-        <nav className="hidden md:flex items-center gap-8">
-          {['Services', 'How It Works', 'Reviews'].map((item) => (
-            <Link 
-              key={item} 
-              href={`#${item.toLowerCase().replace(/ /g, '-')}`} 
-              className={cn(
-                "text-sm font-semibold tracking-wide hover:text-primary transition-colors",
-                scrolled ? "text-muted-foreground" : "text-white/90 drop-shadow-sm"
-              )}
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-        
-        <div className="flex items-center gap-4">
-          {user ? (
-            <Link 
-              href={getDashboardLink()}
-              className={cn(
-                "text-sm font-semibold hover:text-primary transition-colors flex items-center gap-2",
-                scrolled ? "text-foreground" : "text-white drop-shadow-sm"
-              )}
-            >
-              <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs border border-primary/20">
-                {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
-              </div>
-              <span>Hi, {profile?.full_name?.split(' ')[0] || 'User'}</span>
-            </Link>
-          ) : (
-            <Link 
-              href="/login" 
-              className={cn(
-                "text-sm font-semibold hover:text-primary transition-colors",
-                scrolled ? "text-foreground" : "text-white drop-shadow-sm"
-              )}
-            >
-              Log in
-            </Link>
-          )}
-          <Link 
-            href="/#services" 
-            className={cn(
-              buttonVariants({ variant: scrolled ? "default" : "secondary" }), 
-              "shadow-lg hover:scale-105 transition-transform"
-            )}
-          >
-            Book Now
+    <>
+      <header className="sticky top-0 inset-x-0 z-50 w-full bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto flex items-center justify-between px-4 md:px-8 h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="bg-primary p-2 rounded-lg group-hover:scale-105 transition-transform shadow-md shadow-primary/20">
+              <Flame className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-xl font-extrabold tracking-tight text-slate-900">
+              Chimney<span className="text-primary">Care</span>
+            </span>
           </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="text-sm font-semibold text-slate-600 hover:text-primary transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            {user ? (
+              <Link
+                href={getDashboardLink()}
+                className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
+              >
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs border border-primary/20">
+                  {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
+                </div>
+                Hi, {profile?.full_name?.split(' ')[0] || 'User'}
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="text-sm font-semibold text-slate-600 hover:text-primary transition-colors"
+              >
+                Log in
+              </Link>
+            )}
+            <Link
+              href="/#services"
+              className={cn(buttonVariants({ variant: 'default' }), 'rounded-full px-6 shadow-md shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5')}
+            >
+              Book Now
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2 text-slate-600 hover:text-primary rounded-lg hover:bg-slate-100 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
-      </div>
-    </header>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="md:hidden border-t border-slate-100 bg-white px-4 pb-5 pt-3 space-y-1 animate-fadeInUp">
+            {navLinks.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-2.5 px-3 text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+              {user ? (
+                <Link
+                  href={getDashboardLink()}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-2 py-2.5 px-3 text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors"
+                >
+                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
+                    {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
+                  </div>
+                  My Dashboard
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-2.5 px-3 text-sm font-semibold text-slate-700 hover:text-primary hover:bg-primary/5 rounded-xl transition-colors"
+                >
+                  Log in
+                </Link>
+              )}
+              <Link
+                href="/#services"
+                onClick={() => setMobileOpen(false)}
+                className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-xl justify-center')}
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        )}
+      </header>
+    </>
   )
 }

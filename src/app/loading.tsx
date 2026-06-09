@@ -1,37 +1,59 @@
 export default function GlobalLoading() {
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background">
-      <div className="relative flex flex-col items-center gap-6">
-        {/* Animated Logo */}
-        <div className="relative">
-          <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center animate-pulse-slow">
-            <svg
-              className="w-10 h-10 text-primary animate-spin-slow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M12 2C8 2 5 5 5 9c0 2.5 1.5 5 3.5 6.5L8 22h8l-.5-6.5C17.5 14 19 11.5 19 9c0-4-3-7-7-7z" />
-            </svg>
-          </div>
-          {/* Orbiting dot */}
-          <div className="absolute inset-0 animate-spin" style={{ animationDuration: '2s' }}>
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50"></div>
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white">
+      <div className="relative flex flex-col items-center gap-8">
+        {/* Animated Rings */}
+        <div className="relative w-24 h-24">
+          {/* Outer ring */}
+          <div className="absolute inset-0 rounded-full border-4 border-t-purple-500 border-r-transparent border-b-purple-300 border-l-transparent animate-spin" style={{ animationDuration: '1.5s' }}></div>
+          
+          {/* Middle ring */}
+          <div className="absolute inset-2 rounded-full border-4 border-t-transparent border-r-pink-500 border-b-transparent border-l-pink-300 animate-spin" style={{ animationDuration: '2s', animationDirection: 'reverse' }}></div>
+          
+          {/* Inner ring */}
+          <div className="absolute inset-4 rounded-full border-4 border-t-blue-500 border-r-transparent border-b-blue-300 border-l-transparent animate-spin" style={{ animationDuration: '2.5s' }}></div>
+          
+          {/* Center pulsing dot */}
+          <div className="absolute inset-0 m-auto w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center animate-pulse">
+            <div className="w-2 h-2 bg-white rounded-full shadow-lg"></div>
           </div>
         </div>
 
-        {/* Brand Name */}
-        <div className="text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">ChimneyCare</h1>
-          <p className="text-sm text-muted-foreground mt-1">Loading your experience...</p>
+        {/* Loading Text */}
+        <div className="text-center space-y-3">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent animate-pulse">
+            ChimneyCare
+          </h1>
+          <div className="flex items-center gap-2 justify-center">
+            <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+            <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <p className="text-sm text-gray-600 ml-2 animate-pulse">Loading amazing content...</p>
+          </div>
         </div>
 
-        {/* Animated progress bar */}
-        <div className="w-48 h-1 bg-muted rounded-full overflow-hidden">
-          <div className="h-full bg-primary rounded-full animate-progress"></div>
+        {/* Animated progress dots */}
+        <div className="flex gap-2">
+          <div className="w-2 h-2 rounded-full bg-purple-500 animate-[pulse_1s_ease-in-out_infinite]"></div>
+          <div className="w-2 h-2 rounded-full bg-pink-500 animate-[pulse_1s_ease-in-out_0.15s_infinite]"></div>
+          <div className="w-2 h-2 rounded-full bg-blue-500 animate-[pulse_1s_ease-in-out_0.3s_infinite]"></div>
+          <div className="w-2 h-2 rounded-full bg-purple-500 animate-[pulse_1s_ease-in-out_0.45s_infinite]"></div>
+          <div className="w-2 h-2 rounded-full bg-pink-500 animate-[pulse_1s_ease-in-out_0.6s_infinite]"></div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
 }

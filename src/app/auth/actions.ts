@@ -26,7 +26,6 @@ export async function login(formData: FormData) {
   if (user) {
     const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
     if (profile?.role === 'admin') return redirect('/admin')
-    if (profile?.role === 'technician') return redirect('/technician')
   }
 
   revalidatePath('/', 'layout')
