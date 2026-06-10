@@ -80,7 +80,7 @@ export default async function BookServicePage({ params }: { params: Promise<{ se
                   </div>
                   <div>
                     <h3 className="font-bold text-base">Preferred Date & Time</h3>
-                    <p className="text-xs text-muted-foreground">Select when you'd like the service</p>
+                    <p className="text-xs text-muted-foreground">Select when you&apos;d like the service</p>
                   </div>
                 </div>
                 <Input

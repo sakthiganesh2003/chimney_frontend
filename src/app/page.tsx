@@ -9,6 +9,15 @@ import {
 import { HeroSlider } from "@/components/HeroSlider"
 import { Navbar } from "@/components/Navbar"
 
+interface Service {
+  id: string
+  name: string
+  description?: string
+  price_estimate?: string
+  additional_info?: string
+  images?: string[]
+}
+
 export default async function LandingPage() {
   const supabase = await createClient()
   const { data: services } = await supabase.from('services').select('*').order('created_at', { ascending: true })
@@ -59,7 +68,7 @@ export default async function LandingPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 animate-stagger">
-              {services?.map((service: any, i: number) => {
+              {services?.map((service: Service, i: number) => {
                 const Icon = serviceIcons[i % serviceIcons.length]
                 const imageUrl = service.images?.[0] ||
                   'https://images.unsplash.com/photo-1585058178121-654dbbdc45e5?q=80&w=600&auto=format&fit=crop'
@@ -174,7 +183,7 @@ export default async function LandingPage() {
                     <div className="flex gap-1 mb-2">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                     </div>
-                    <p className="font-medium text-sm text-white/90 leading-snug">"Best chimney service I have ever experienced. Highly professional!"</p>
+                    <p className="font-medium text-sm text-white/90 leading-snug">&quot;Best chimney service I have ever experienced. Highly professional!&quot;</p>
                     <p className="text-xs text-white/60 mt-1.5">— Verified Customer</p>
                   </div>
                 </div>
@@ -257,7 +266,7 @@ export default async function LandingPage() {
                       <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-white/85 text-sm leading-relaxed mb-6">"{review.text}"</p>
+                  <p className="text-white/85 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
                       {review.name.charAt(0)}

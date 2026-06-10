@@ -3,8 +3,9 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { SupabaseClient } from '@supabase/supabase-js'
 
-async function uploadImages(supabase: any, files: File[]): Promise<string[]> {
+async function uploadImages(supabase: SupabaseClient, files: File[]): Promise<string[]> {
   const urls: string[] = []
   for (const file of files) {
     if (!file || file.size === 0) continue

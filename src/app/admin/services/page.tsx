@@ -47,7 +47,19 @@ export default function AdminServicesPage() {
     setLoading(false)
   }
 
-  useEffect(() => { fetchServices() }, [])
+  useEffect(() => {
+    let active = true
+    supabase.from('services').select('*').order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (active) {
+          if (!error && data) setServices(data)
+          setLoading(false)
+        }
+      })
+    return () => {
+      active = false
+    }
+  }, [supabase])
 
   const handleImageChange = (index: number, file: File | null) => {
     const newFiles = [...imageFiles]

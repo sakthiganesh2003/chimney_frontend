@@ -57,7 +57,7 @@ export default async function AdminDashboard() {
     <div className="p-4 md:p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard Overview</h1>
-        <p className="text-muted-foreground mt-1">Welcome back! Here's what's happening today.</p>
+        <p className="text-muted-foreground mt-1">Welcome back! Here&apos;s what&apos;s happening today.</p>
       </div>
 
       {/* ── Stats Cards ── */}

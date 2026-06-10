@@ -6,11 +6,12 @@ import { Flame, Menu, X } from 'lucide-react'
 import { buttonVariants } from './ui/button'
 import { createClient } from '@/utils/supabase/client'
 import { cn } from '@/lib/utils'
+import { User } from '@supabase/supabase-js'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [user, setUser] = useState<any>(null)
-  const [profile, setProfile] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
+  const [profile, setProfile] = useState<{ full_name: string; role: string } | null>(null)
   const supabase = createClient()
 
   useEffect(() => {

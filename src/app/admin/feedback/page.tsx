@@ -123,7 +123,7 @@ export default async function AdminFeedback({
               </div>
             </CardHeader>
             <CardContent className="pt-6 flex-1">
-              <p className="text-sm italic text-muted-foreground">"{review.feedback}"</p>
+              <p className="text-sm italic text-muted-foreground">&quot;{review.feedback}&quot;</p>
               <div className="mt-6 text-xs text-slate-400">
                 {new Date(review.created_at).toLocaleDateString()}
               </div>

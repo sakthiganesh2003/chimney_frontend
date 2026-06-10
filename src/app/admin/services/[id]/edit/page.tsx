@@ -10,13 +10,22 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 
+interface Service {
+  id: string
+  name: string
+  description?: string
+  price_estimate?: string
+  additional_info?: string
+  images?: string[]
+}
+
 export default function EditServicePage() {
   const params = useParams()
   const id = params.id as string
   const supabase = createClient()
   const router = useRouter()
 
-  const [service, setService] = useState<any>(null)
+  const [service, setService] = useState<Service | null>(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
 

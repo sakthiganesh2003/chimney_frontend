@@ -32,7 +32,7 @@ export function AdminLayoutWrapper({
   const isActive = (href: string, exact?: boolean) =>
     exact ? pathname === href : pathname.startsWith(href)
 
-  const SidebarContent = () => (
+  const renderSidebarContent = () => (
     <>
       {/* Logo */}
       <div className="px-6 py-6 border-b border-slate-800 flex items-center justify-between">
@@ -100,7 +100,7 @@ export function AdminLayoutWrapper({
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex w-full relative">
       {/* Desktop Sidebar */}
       <aside className="w-64 shrink-0 hidden md:flex flex-col bg-slate-950 border-r border-slate-800 min-h-screen sticky top-0 h-screen">
-        <SidebarContent />
+        {renderSidebarContent()}
       </aside>
 
       {/* Mobile Sidebar (Drawer) */}
@@ -116,7 +116,7 @@ export function AdminLayoutWrapper({
           "absolute top-0 bottom-0 left-0 w-64 bg-slate-950 border-r border-slate-800 flex flex-col transition-transform duration-300 ease-out",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}>
-          <SidebarContent />
+          {renderSidebarContent()}
         </aside>
       </div>
 
