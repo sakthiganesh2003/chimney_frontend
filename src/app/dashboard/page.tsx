@@ -45,7 +45,7 @@ export default async function DashboardPage() {
           <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <Flame className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="font-extrabold text-lg tracking-tight">ChimneyCare</span>
+          <span className="font-extrabold text-lg tracking-tight">Chimney Doctors</span>
         </Link>
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex flex-col items-end">

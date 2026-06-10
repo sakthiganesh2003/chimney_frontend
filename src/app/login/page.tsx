@@ -12,7 +12,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
     <div className="flex min-h-screen items-center justify-center p-4 bg-muted/40">
       <Link href="/" className="absolute top-8 left-8 flex items-center gap-2">
         <Flame className="h-6 w-6 text-primary" />
-        <span className="font-bold text-xl">ChimneyCare</span>
+        <span className="font-bold text-xl">Chimney Doctors</span>
       </Link>
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">

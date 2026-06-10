@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ChimneyCare | Professional Chimney Services",
+  title: "Chimney Doctors | Professional Chimney Services",
   description: "Top-rated chimney installation, cleaning, and repair services at your doorstep.",
 };
 

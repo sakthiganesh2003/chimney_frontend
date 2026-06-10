@@ -41,7 +41,7 @@ export function AdminLayoutWrapper({
             <Flame className="w-5 h-5 text-primary-foreground" />
           </div>
           <div>
-            <div className="font-extrabold text-white text-sm leading-none">ChimneyCare</div>
+            <div className="font-extrabold text-white text-sm leading-none">Chimney Doctors</div>
             <div className="text-[11px] text-slate-500 mt-0.5">Admin Console</div>
           </div>
         </Link>

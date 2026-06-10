@@ -145,7 +145,7 @@ export default async function LandingPage() {
               {/* Left */}
               <div className="animate-slideInLeft">
                 <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-                  Why ChimneyCare
+                  Why Chimney Doctors
                 </span>
                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-10">
                   The most trusted name in chimney services
@@ -324,7 +324,7 @@ export default async function LandingPage() {
                 <Flame className="h-5 w-5 text-white" />
               </div>
               <span className="font-extrabold text-xl text-white tracking-tight">
-                Chimney<span className="text-primary">Care</span>
+                Chimney<span className="text-primary">Doctors</span>
               </span>
             </div>
             <p className="text-slate-500 leading-relaxed text-sm mb-6">
@@ -362,7 +362,7 @@ export default async function LandingPage() {
           </div>
         </div>
         <div className="border-t border-slate-800 py-6 text-center text-slate-600 text-sm">
-          © {new Date().getFullYear()} ChimneyCare. All rights reserved. Made with ❤️ in India.
+          © {new Date().getFullYear()} Chimney Doctors. All rights reserved. Made with ❤️ in India.
         </div>
       </footer>
     </div>

@@ -22,7 +22,7 @@ export default function GlobalLoading() {
         {/* Loading Text */}
         <div className="text-center space-y-3">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent animate-pulse">
-            ChimneyCare
+            Chimney Doctors
           </h1>
           <div className="flex items-center gap-2 justify-center">
             <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>

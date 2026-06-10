@@ -48,7 +48,7 @@ export function Navbar() {
               <Flame className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-extrabold tracking-tight text-slate-900">
-              Chimney<span className="text-primary">Care</span>
+              Chimney<span className="text-primary">Doctors</span>
             </span>
           </Link>
 
