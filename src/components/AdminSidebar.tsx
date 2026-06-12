@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Flame, LayoutDashboard, ClipboardList, Wrench, Star, Users, LogOut, UserCog } from 'lucide-react'
+import { Flame, LayoutDashboard, ClipboardList, Wrench, Star, Users, LogOut, UserCog, Images } from 'lucide-react'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/bookings', label: 'Bookings', icon: ClipboardList },
   { href: '/admin/technicians', label: 'Technicians', icon: UserCog },
   { href: '/admin/services', label: 'Services', icon: Wrench },
+  { href: '/admin/gallery', label: 'Gallery', icon: Images },
   { href: '/admin/feedback', label: 'Feedback', icon: Star },
   { href: '/admin/users', label: 'Users', icon: Users },
 ]

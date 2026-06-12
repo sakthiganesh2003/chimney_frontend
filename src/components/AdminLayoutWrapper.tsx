@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Flame, LayoutDashboard, ClipboardList, Wrench, Star, Users, LogOut, Menu, X, UserCog } from 'lucide-react'
+import { Flame, LayoutDashboard, ClipboardList, Wrench, Star, Users, LogOut, Menu, X, UserCog, Mail, Image as ImageIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/bookings', label: 'Bookings', icon: ClipboardList },
+  { href: '/admin/inquiries', label: 'Inquiries', icon: Mail },
+  { href: '/admin/gallery', label: 'Gallery', icon: ImageIcon },
   { href: '/admin/technicians', label: 'Technicians', icon: UserCog },
   { href: '/admin/services', label: 'Services', icon: Wrench },
   { href: '/admin/feedback', label: 'Feedback', icon: Star },

@@ -2,13 +2,13 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Star } from 'lucide-react'
-
 import { Button } from '@/components/ui/button'
+import { Pagination } from '@/components/ui/pagination'
 
 export default async function AdminFeedback({
   searchParams,
 }: {
-  searchParams: Promise<{ rating?: string; search?: string }>
+  searchParams: Promise<{ rating?: string; search?: string; page?: string }>
 }) {
   const supabase = await createClient()
 
@@ -21,6 +21,16 @@ export default async function AdminFeedback({
   const params = await searchParams
   const ratingFilter = params.rating || ''
   const searchFilter = params.search || ''
+  const PAGE_SIZE = 10
+  const page = Math.max(1, parseInt(params.page || '1', 10))
+
+  // Count total for pagination
+  let countQuery = supabase.from('reviews').select('*', { count: 'exact', head: true })
+  if (ratingFilter) countQuery = countQuery.eq('rating', parseInt(ratingFilter))
+  const { count: totalCount } = await countQuery
+
+  const start = (page - 1) * PAGE_SIZE
+  const end = start + PAGE_SIZE - 1
 
   // Fetch all reviews
   let query = supabase
@@ -35,7 +45,7 @@ export default async function AdminFeedback({
     query = query.eq('rating', parseInt(ratingFilter))
   }
 
-  let { data: reviews } = await query.order('created_at', { ascending: false })
+  let { data: reviews } = await query.order('created_at', { ascending: false }).range(start, end)
 
   if (searchFilter && reviews) {
     const searchLower = searchFilter.toLowerCase()
@@ -140,6 +150,18 @@ export default async function AdminFeedback({
           </div>
         )}
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        page={page}
+        totalCount={totalCount || 0}
+        pageSize={PAGE_SIZE}
+        baseUrl="/admin/feedback"
+        extraParams={{
+          ...(ratingFilter ? { rating: ratingFilter } : {}),
+          ...(searchFilter ? { search: searchFilter } : {}),
+        }}
+      />
     </div>
   )
 }

@@ -35,6 +35,7 @@ export function Navbar() {
   const navLinks = [
     { label: 'Services', href: '/#services' },
     { label: 'How It Works', href: '/#how-it-works' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Reviews', href: '/#reviews' },
   ]
 

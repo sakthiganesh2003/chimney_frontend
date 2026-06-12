@@ -6,13 +6,14 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { UserCog, Phone, Mail, Trash2, PlusCircle, Wrench, Calendar, FileText, CheckCircle2, ClipboardList } from 'lucide-react'
 import { addTechnician, deleteTechnician, updateTechnician } from './actions'
+import { Pagination } from '@/components/ui/pagination'
 
 export default async function AdminTechniciansPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; edit?: string; search?: string }>
+  searchParams: Promise<{ error?: string; edit?: string; search?: string; page?: string }>
 }) {
-  const { error: pageError, edit: editId, search: searchFilter } = await searchParams
+  const { error: pageError, edit: editId, search: searchFilter, page: pageParam } = await searchParams
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
@@ -21,11 +22,23 @@ export default async function AdminTechniciansPage({
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
   if (profile?.role !== 'admin') redirect('/dashboard')
 
-  // Fetch all technicians
+  const PAGE_SIZE = 10
+  const page = Math.max(1, parseInt(pageParam || '1', 10))
+
+  // Count total technicians
+  const { count: totalCount } = await supabase
+    .from('technicians')
+    .select('*', { count: 'exact', head: true })
+
+  const start = (page - 1) * PAGE_SIZE
+  const end = start + PAGE_SIZE - 1
+
+  // Fetch paginated technicians
   let { data: technicians } = await supabase
     .from('technicians')
     .select('*')
     .order('created_at', { ascending: false })
+    .range(start, end)
 
   // Search filter
   if (searchFilter && technicians) {
@@ -290,6 +303,17 @@ export default async function AdminTechniciansPage({
           )}
         </div>
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        page={page}
+        totalCount={totalCount || 0}
+        pageSize={PAGE_SIZE}
+        baseUrl="/admin/technicians"
+        extraParams={{
+          ...(searchFilter ? { search: searchFilter } : {}),
+        }}
+      />
     </div>
   )
 }
