@@ -24,9 +24,11 @@ export function AdminSidebar({ adminName }: { adminName: string }) {
       {/* Logo */}
       <div className="px-6 py-6 border-b border-slate-800">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Flame className="w-5 h-5 text-primary-foreground" />
-          </div>
+          <img 
+            src="/chimney_icon.png" 
+            alt="Chimney Doctors" 
+            className="w-9 h-9 object-contain rounded-xl group-hover:scale-115 transition-transform duration-300 bg-white p-1"
+          />
           <div>
             <div className="font-extrabold text-white text-sm leading-none">Chimney Doctors</div>
             <div className="text-[11px] text-slate-500 mt-0.5">Admin Console</div>

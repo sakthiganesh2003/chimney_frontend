@@ -42,9 +42,11 @@ export default async function DashboardPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Flame className="h-4 w-4 text-primary-foreground" />
-          </div>
+          <img 
+            src="/chimney_icon.png" 
+            alt="Chimney Doctors" 
+            className="w-8 h-8 object-contain rounded-xl group-hover:scale-115 transition-transform duration-300 bg-white p-0.5 border"
+          />
           <span className="font-extrabold text-lg tracking-tight">Chimney Doctors</span>
         </Link>
         <div className="flex items-center gap-3">

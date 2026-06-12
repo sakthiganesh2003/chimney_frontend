@@ -39,9 +39,11 @@ export function AdminLayoutWrapper({
       {/* Logo */}
       <div className="px-6 py-6 border-b border-slate-800 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group" onClick={() => setMobileOpen(false)}>
-          <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Flame className="w-5 h-5 text-primary-foreground" />
-          </div>
+          <img 
+            src="/chimney_icon.png" 
+            alt="Chimney Doctors" 
+            className="w-9 h-9 object-contain rounded-xl group-hover:scale-115 transition-transform duration-300 bg-white p-1"
+          />
           <div>
             <div className="font-extrabold text-white text-sm leading-none">Chimney Doctors</div>
             <div className="text-[11px] text-slate-500 mt-0.5">Admin Console</div>
@@ -134,9 +136,11 @@ export function AdminLayoutWrapper({
             >
               <Menu className="w-5 h-5" />
             </button>
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Flame className="w-4 h-4 text-primary-foreground" />
-            </div>
+            <img 
+              src="/chimney_icon.png" 
+              alt="Chimney Doctors" 
+              className="w-8 h-8 object-contain rounded-lg bg-white p-0.5"
+            />
             <span className="font-bold text-base">Admin</span>
           </div>
           <div className="hidden md:block" />

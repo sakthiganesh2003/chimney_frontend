@@ -503,9 +503,11 @@ export default async function LandingPage() {
         <div className="container mx-auto max-w-7xl px-4 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="bg-primary p-2 rounded-xl shadow-md shadow-primary/30">
-                <Flame className="h-5 w-5 text-white" />
-              </div>
+              <img 
+                src="/chimney_icon.png" 
+                alt="Chimney Doctors" 
+                className="w-9 h-9 object-contain rounded-xl bg-white p-1"
+              />
               <span className="font-extrabold text-xl text-white tracking-tight">
                 Chimney<span className="text-primary">Doctors</span>
               </span>

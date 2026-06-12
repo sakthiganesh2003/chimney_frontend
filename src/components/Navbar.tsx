@@ -103,7 +103,7 @@ export function Navbar() {
             <div className="relative">
               {/* Increased logo size from h-9/h-11 to h-12/h-14 */}
               <Image 
-                src="/logo2.png" 
+                src="/chimney_icon.png" 
                 alt="Chimney Doctors" 
                 width={56}
                 height={56}
