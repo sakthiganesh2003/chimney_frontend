@@ -19,6 +19,7 @@ interface BookingDetail {
   guest_name: string | null
   guest_phone: string | null
   guest_notes: string | null
+  customer_id: string | null
   services: { name: string } | null
   customer: { full_name: string | null; phone: string | null } | null
   technician: { id: string; name: string; phone: string | null } | null
