@@ -25,11 +25,11 @@ export async function login(formData: FormData) {
   const { data: { user } } = await supabase.auth.getUser()
   if (user) {
     const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
-    if (profile?.role === 'admin') return redirect('/admin')
+    if (profile?.role === 'admin') return redirect('/admin?success=' + encodeURIComponent('Welcome back, Admin!'))
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  redirect('/dashboard?success=' + encodeURIComponent('Logged in successfully!'))
 }
 
 export async function signup(formData: FormData) {
@@ -54,7 +54,7 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  redirect('/dashboard?success=' + encodeURIComponent('Account created successfully! Welcome to Chimney Doctors!'))
 }
 
 export async function logout() {
