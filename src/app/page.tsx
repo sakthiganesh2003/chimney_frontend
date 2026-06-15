@@ -9,6 +9,7 @@ import {
 import { HeroSlider } from "@/components/HeroSlider"
 import { Navbar } from "@/components/Navbar"
 import { ContactForm } from "@/components/ContactForm"
+import { ScrollReveal } from "@/components/ScrollReveal"
 
 interface Service {
   id: string
@@ -68,10 +69,10 @@ export default async function LandingPage() {
                 { icon: Clock, text: 'Same-Day Availability' },
                 { icon: HeartHandshake, text: 'Pay After Service' },
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
+                <ScrollReveal key={i} animation="fadeIn" delay={i * 0.08} duration={0.5} as="div" className="flex items-center gap-2">
                   <item.icon className="w-4 h-4 text-white/70" />
                   <span>{item.text}</span>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -81,7 +82,7 @@ export default async function LandingPage() {
         <section id="services" className="py-24 px-4 bg-slate-50">
           <div className="container mx-auto max-w-7xl">
             {/* Section heading */}
-            <div className="text-center mb-14 animate-fadeInUp">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 What We Offer
               </span>
@@ -91,50 +92,62 @@ export default async function LandingPage() {
               <p className="text-slate-500 max-w-xl mx-auto text-lg">
                 Comprehensive chimney solutions with transparent pricing and guaranteed workmanship.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 animate-stagger">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 ">
               {services?.map((service: Service, i: number) => {
                 const Icon = serviceIcons[i % serviceIcons.length]
                 const imageUrl = service.images?.[0] ||
                   'https://images.unsplash.com/photo-1585058178121-654dbbdc45e5?q=80&w=600&auto=format&fit=crop'
                 return (
-                  <div
+                  <ScrollReveal
                     key={service.id}
-                    className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1.5 transition-all duration-400 animate-fadeInUp"
+                    animation="scaleUp"
+                    delay={i * 0.12}
+                    duration={0.65}
+                    className="h-full"
                   >
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
-                      <img
-                        src={imageUrl}
-                        alt={service.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                      <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/95 backdrop-blur-sm shadow flex items-center justify-center">
-                        <Icon className="w-4.5 h-4.5 text-primary" />
-                      </div>
-                    </div>
+                    <div
+                      className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1.5 transition-all duration-400 h-full flex flex-col justify-between "
+                    >
+                      <div>
+                        {/* Image */}
+                        <div className="relative h-48 overflow-hidden bg-slate-100">
+                          <img
+                            src={imageUrl}
+                            alt={service.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+                          <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/95 backdrop-blur-sm shadow flex items-center justify-center">
+                            <Icon className="w-4.5 h-4.5 text-primary" />
+                          </div>
+                        </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
-                        {service.name}
-                      </h3>
-                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-5">
-                        {service.description}
-                      </p>
-                      <div className="flex items-center justify-between border-t border-slate-100 pt-4">
-                        <span className="font-bold text-primary text-base">{service.price_estimate}</span>
-                        <Link
-                          href={`/services/${service.id}`}
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary bg-primary/8 hover:bg-primary hover:text-white px-3 py-1.5 rounded-lg transition-all duration-200"
-                        >
-                          View Details <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                        {/* Content */}
+                        <div className="p-6">
+                          <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                            {service.name}
+                          </h3>
+                          <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-5">
+                            {service.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="px-6 pb-6">
+                        <div className="flex items-center justify-between border-t border-slate-100 pt-4">
+                          <span className="font-bold text-primary text-base  text-slate-900 font-mono">{service.price_estimate}</span>
+                          <Link
+                            href={`/services/${service.id}`}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary bg-primary/8 hover:bg-primary hover:text-white px-3 py-1.5 rounded-lg transition-all duration-200"
+                          >
+                            View Details <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
                 )
               })}
             </div>
@@ -151,13 +164,13 @@ export default async function LandingPage() {
                 { number: "98%", label: "Satisfaction Rate", icon: Star },
                 { number: "50+", label: "Expert Technicians", icon: BadgeCheck },
               ].map((stat, i) => (
-                <div key={i} className="animate-fadeInUp group">
+                <ScrollReveal key={i} animation="zoomIn" delay={i * 0.12} duration={0.6} className="group">
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                     <stat.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                   </div>
                   <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-1">{stat.number}</div>
                   <div className="text-slate-500 text-sm font-medium">{stat.label}</div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -169,7 +182,7 @@ export default async function LandingPage() {
           <div className="container mx-auto max-w-7xl relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left */}
-              <div className="animate-slideInLeft">
+              <ScrollReveal animation="slideInLeft" duration={0.8}>
                 <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                   Why Chimney Doctors
                 </span>
@@ -183,7 +196,7 @@ export default async function LandingPage() {
                     { title: "Pay Only After Completion", desc: "We accept Cash or UPI only once the job is done and you are 100% satisfied.", icon: HeartHandshake },
                     { title: "Service Warranty Included", desc: "Every repair and installation comes with a comprehensive warranty for your peace of mind.", icon: Shield },
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4 group animate-fadeInUp" style={{ animationDelay: `${i * 100}ms` }}>
+                    <ScrollReveal key={i} animation="slideInLeft" delay={0.15 + i * 0.1} duration={0.6} className="flex gap-4 group">
                       <div className="shrink-0 w-11 h-11 rounded-xl bg-white border border-primary/20 shadow-sm flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
                         <item.icon className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
                       </div>
@@ -191,13 +204,13 @@ export default async function LandingPage() {
                         <h3 className="text-base font-bold text-slate-900 mb-1">{item.title}</h3>
                         <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
                       </div>
-                    </div>
+                    </ScrollReveal>
                   ))}
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right image */}
-              <div className="relative animate-slideInRight hidden lg:block">
+              <ScrollReveal animation="blurIn" duration={1.0} delay={0.1} className="relative hidden lg:block">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border-4 border-white">
                   <img
                     src="/service-pro.png"
@@ -231,7 +244,7 @@ export default async function LandingPage() {
                   <div className="text-2xl font-extrabold">10+</div>
                   <div className="text-xs text-white/80 font-medium">Years of Trust</div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -239,7 +252,7 @@ export default async function LandingPage() {
         {/* ── How It Works ── */}
         <section id="how-it-works" className="py-24 px-4 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-14 animate-fadeInUp">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Simple Process
               </span>
@@ -247,24 +260,26 @@ export default async function LandingPage() {
               <p className="text-slate-500 text-lg max-w-xl mx-auto">
                 Four simple steps to a cleaner, safer kitchen.
               </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-stagger">
+            </ScrollReveal>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { title: "Choose a Service", icon: Sparkles, desc: "Browse our services and select what your chimney needs." },
                 { title: "Book a Slot", icon: Clock, desc: "Pick a date & time that works for you — we confirm instantly." },
                 { title: "Expert Arrives", icon: Wrench, desc: "Our certified technician arrives on time with all equipment." },
                 { title: "Pay After Service", icon: HeartHandshake, desc: "Pay via Cash or UPI only after you are fully satisfied." },
               ].map((step, i) => (
-                <div key={i} className="relative bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/8 hover:-translate-y-1 transition-all duration-300 animate-fadeInUp group">
-                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary text-white text-sm font-extrabold flex items-center justify-center shadow-md">
-                    {i + 1}
+                <ScrollReveal key={i} animation="flipIn" delay={i * 0.13} duration={0.7} className="h-full">
+                  <div className="relative bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/8 hover:-translate-y-1 transition-all duration-300 group h-full">
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary text-white text-sm font-extrabold flex items-center justify-center shadow-md">
+                      {i + 1}
+                    </div>
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                      <step.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-base mb-2">{step.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
                   </div>
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                    <step.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-slate-900 text-base mb-2">{step.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -273,7 +288,7 @@ export default async function LandingPage() {
         {/* ── Gallery Section ── */}
         <section id="gallery" className="py-24 px-4 bg-white border-t border-slate-100">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-14 animate-fadeInUp">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Our Work
               </span>
@@ -283,30 +298,36 @@ export default async function LandingPage() {
               <p className="text-slate-500 text-lg max-w-xl mx-auto">
                 Real photos of our chimney cleaning, installation, and repair projects across Chennai.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Grid of images */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-stagger">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {galleryImages.slice(0, 6).map((img, idx) => (
-                <div 
-                  key={img.name} 
-                  className="relative aspect-video rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group border border-slate-200 transition-all duration-300 hover:-translate-y-1"
+                <ScrollReveal
+                  key={img.name}
+                  animation={idx % 2 === 0 ? 'scaleUp' : 'blurIn'}
+                  delay={idx * 0.08}
+                  duration={0.65}
                 >
-                  <img
-                    src={img.publicUrl}
-                    alt={`Chimney service project ${idx + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <div className="flex items-center gap-2 text-white">
-                      <Images className="w-4 h-4 text-white/80" />
-                      <span className="text-sm font-semibold tracking-wide">
-                        Verified Project Completed
-                      </span>
+                  <div 
+                    className="relative aspect-video rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group border border-slate-200 transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <img
+                      src={img.publicUrl}
+                      alt={`Chimney service project ${idx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                      <div className="flex items-center gap-2 text-white">
+                        <Images className="w-4 h-4 text-white/80" />
+                        <span className="text-sm font-semibold tracking-wide">
+                          Verified Project Completed
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
@@ -324,36 +345,40 @@ export default async function LandingPage() {
         {/* ── Testimonials ── */}
         <section id="reviews" className="py-24 px-4 bg-primary">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-14 animate-fadeInUp">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
               <span className="inline-block bg-white/15 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Customer Reviews
               </span>
               <h2 className="text-4xl font-extrabold tracking-tight text-white mb-3">What Our Customers Say</h2>
               <p className="text-white/70 text-lg">Trusted by thousands of households across India.</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 animate-stagger">
+            </ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 { name: "Priya Sharma", location: "Mumbai", text: "Excellent service! The technician was very professional and cleaned the chimney spotlessly. Highly recommend!", rating: 5 },
                 { name: "Rahul Verma", location: "Delhi", text: "Very quick response and fair pricing. My chimney now works perfectly. Will definitely book again.", rating: 5 },
                 { name: "Anita Patel", location: "Bangalore", text: "Great experience from booking to completion. Easy website and very reliable technicians.", rating: 5 },
               ].map((review, i) => (
-                <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-7 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 animate-fadeInUp">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(review.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-white/85 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
-                      {review.name.charAt(0)}
-                    </div>
+                <ScrollReveal key={i} animation="scaleUp" delay={i * 0.13} duration={0.65} className="h-full">
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-7 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
                     <div>
-                      <div className="font-semibold text-white text-sm">{review.name}</div>
-                      <div className="text-xs text-white/60">{review.location}</div>
+                      <div className="flex gap-1 mb-4">
+                        {[...Array(review.rating)].map((_, j) => (
+                          <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-white/85 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
+                        {review.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-white text-sm">{review.name}</div>
+                        <div className="text-xs text-white/60">{review.location}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -362,7 +387,7 @@ export default async function LandingPage() {
         {/* ── Contact Us & Map Section ── */}
         <section id="contact" className="py-24 px-4 bg-slate-50 border-t border-slate-100">
           <div className="container mx-auto max-w-7xl">
-            <div className="text-center mb-14 animate-fadeInUp">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Get In Touch
               </span>
@@ -372,11 +397,11 @@ export default async function LandingPage() {
               <p className="text-slate-500 max-w-xl mx-auto text-lg">
                 Have questions about our service? Drop us a message, or find us on the map.
               </p>
-            </div>
+            </ScrollReveal>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
               {/* Left: Contact Form & Info */}
-              <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm flex flex-col justify-between">
+              <ScrollReveal animation="slideInLeft" className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-sm flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Send us a Message</h3>
                   <p className="text-slate-500 text-sm mb-6">
@@ -417,10 +442,10 @@ export default async function LandingPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right: Map */}
-              <div className="lg:col-span-5 flex flex-col gap-6">
+              <ScrollReveal animation="slideInRight" className="lg:col-span-5 flex flex-col gap-6">
                 <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm flex-1 flex flex-col">
                   <div className="mb-4 text-left">
                     <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
@@ -460,7 +485,7 @@ export default async function LandingPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -472,7 +497,7 @@ export default async function LandingPage() {
           />
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
-          <div className="container mx-auto max-w-4xl relative z-10 text-center animate-fadeInUp">
+          <ScrollReveal animation="fadeInUp" className="container mx-auto max-w-4xl relative z-10 text-center">
             <span className="inline-block bg-white/10 border border-white/15 text-white/80 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
               Get Started Today
             </span>
@@ -494,7 +519,7 @@ export default async function LandingPage() {
                 <Phone className="w-5 h-5" /> Contact Us
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </section>
       </main>
 
