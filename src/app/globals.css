@@ -214,3 +214,12 @@ a, button { transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

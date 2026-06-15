@@ -343,38 +343,38 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Testimonials ── */}
-        <section id="reviews" className="py-16 md:py-24 px-4 bg-primary">
+        <section id="reviews" className="py-16 md:py-24 px-4 bg-primary/[0.03] border-y border-primary/10">
           <div className="container mx-auto max-w-7xl">
             <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
-              <span className="inline-block bg-white/15 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+              <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Customer Reviews
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">What Our Customers Say</h2>
-              <p className="text-white/70 text-base sm:text-lg">Trusted by thousands of households across India.</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">What Our Customers Say</h2>
+              <p className="text-slate-500 text-base sm:text-lg">Trusted by thousands of households across India.</p>
             </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex flex-row overflow-x-auto snap-x snap-mandatory flex-nowrap md:grid md:grid-cols-3 gap-6 pb-6 scrollbar-none">
               {[
                 { name: "Priya Sharma", location: "Mumbai", text: "Excellent service! The technician was very professional and cleaned the chimney spotlessly. Highly recommend!", rating: 5 },
                 { name: "Rahul Verma", location: "Delhi", text: "Very quick response and fair pricing. My chimney now works perfectly. Will definitely book again.", rating: 5 },
                 { name: "Anita Patel", location: "Bangalore", text: "Great experience from booking to completion. Easy website and very reliable technicians.", rating: 5 },
               ].map((review, i) => (
-                <ScrollReveal key={i} animation="scaleUp" delay={i * 0.13} duration={0.65} className="h-full">
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-7 hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
+                <ScrollReveal key={i} animation="scaleUp" delay={i * 0.13} duration={0.65} className="h-full w-[85vw] sm:w-[350px] shrink-0 snap-start md:w-auto md:shrink">
+                  <div className="bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
                     <div>
                       <div className="flex gap-1 mb-4">
                         {[...Array(review.rating)].map((_, j) => (
                           <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
-                      <p className="text-white/85 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">
                         {review.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-semibold text-white text-sm">{review.name}</div>
-                        <div className="text-xs text-white/60">{review.location}</div>
+                        <div className="font-semibold text-slate-800 text-sm">{review.name}</div>
+                        <div className="text-xs text-slate-400">{review.location}</div>
                       </div>
                     </div>
                   </div>
