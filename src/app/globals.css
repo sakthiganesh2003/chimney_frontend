@@ -51,8 +51,20 @@
   --destructive: oklch(0.6 0.22 25);
   --border: oklch(0.89 0.02 301.76);
   --input: oklch(0.89 0.02 301.76);
-  --ring: oklch(0.49 0.254 301.76);
   --radius: 0.75rem;
+
+  /* Hero Slider Heights */
+  --hero-height: 70svh;
+  --hero-min-height: 400px;
+  --hero-max-height: 600px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --hero-height: calc(100svh - 80px);
+    --hero-min-height: 520px;
+    --hero-max-height: 900px;
+  }
 }
 
 .dark {

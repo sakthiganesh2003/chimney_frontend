@@ -31,6 +31,10 @@ export function HeroSlider() {
   const [current, setCurrent] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [contentVisible, setContentVisible] = useState(true)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+
+  const minSwipeDistance = 50
 
   const goTo = useCallback(
     (next: number) => {
@@ -49,13 +53,41 @@ export function HeroSlider() {
   const prev = () => goTo((current - 1 + SLIDES.length) % SLIDES.length)
   const next = useCallback(() => goTo((current + 1) % SLIDES.length), [current, goTo])
 
+  // Touch handlers for swipe support
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      next()
+    } else if (isRightSwipe) {
+      prev()
+    }
+  }
+
   useEffect(() => {
     const timer = setInterval(next, 6000)
     return () => clearInterval(timer)
   }, [next])
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-900" style={{ height: 'calc(100svh - 80px)', minHeight: '520px', maxHeight: '900px' }}>
+    <section 
+      className="relative w-full overflow-hidden bg-slate-900" 
+      style={{ height: 'var(--hero-height)', minHeight: 'var(--hero-min-height)', maxHeight: 'var(--hero-max-height)' }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
 
       {/* ── Backgrounds ── */}
       {SLIDES.map((slide, index) => (
@@ -69,7 +101,7 @@ export function HeroSlider() {
           {/* Very light overlay — just enough for text contrast */}
           <div className="absolute inset-0 z-10 bg-black/30" />
           {/* Left-side stronger tint for text area only */}
-          <div className="absolute inset-y-0 left-0 w-3/4 z-10 bg-gradient-to-r from-black/55 to-transparent" />
+          <div className="absolute inset-y-0 left-0 w-full sm:w-3/4 z-10 bg-gradient-to-r from-black/60 to-transparent" />
           {/* Bottom gradient for dots */}
           <div className="absolute bottom-0 inset-x-0 h-24 z-10 bg-gradient-to-t from-black/40 to-transparent" />
 
@@ -88,10 +120,10 @@ export function HeroSlider() {
 
       {/* ── Content ── */}
       <div className="absolute inset-0 z-20 flex items-center">
-        <div className="w-full px-5 sm:px-10 md:px-16 lg:px-24">
+        <div className="w-full px-6 sm:px-10 md:px-16 lg:px-24">
           <div
             className={cn(
-              'max-w-[75vw] sm:max-w-md md:max-w-2xl',
+              'max-w-[90vw] sm:max-w-md md:max-w-2xl',
               'transition-all duration-450 ease-out',
               contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             )}
@@ -103,12 +135,12 @@ export function HeroSlider() {
             </div>
 
             {/* Title — short & punchy on mobile */}
-            <h1 className="text-[1.6rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.15] mb-2.5 sm:mb-4 drop-shadow-xl">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.15] mb-2.5 sm:mb-4 drop-shadow-xl">
               {SLIDES[current].title}
             </h1>
 
             {/* Subtitle — visible from xs up */}
-            <p className="text-xs sm:text-base md:text-lg text-white/80 leading-relaxed mb-5 sm:mb-7 max-w-sm">
+            <p className="text-xs sm:text-base md:text-lg text-white/80 leading-relaxed mb-5 sm:mb-7 max-w-xs sm:max-w-sm">
               {SLIDES[current].subtitle}
             </p>
 
@@ -138,7 +170,7 @@ export function HeroSlider() {
 
       {/* ── Prev / Next arrows — mobile: bottom-left corner (away from WhatsApp) ── */}
       {/* Mobile arrows */}
-      <div className="absolute bottom-10 left-4 z-30 flex gap-2 sm:hidden">
+      <div className="absolute bottom-6 left-6 z-30 flex gap-2 sm:hidden">
         <button
           onClick={prev}
           aria-label="Previous slide"
@@ -174,7 +206,7 @@ export function HeroSlider() {
       </div>
 
       {/* ── Dot indicators — centered bottom ── */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {SLIDES.map((_, idx) => (
           <button
             key={idx}

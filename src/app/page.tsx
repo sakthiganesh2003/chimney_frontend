@@ -79,17 +79,17 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Services Section ── */}
-        <section id="services" className="py-24 px-4 bg-slate-50">
+        <section id="services" className="py-16 md:py-24 px-4 bg-slate-50">
           <div className="container mx-auto max-w-7xl">
             {/* Section heading */}
-            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 What We Offer
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
                 Our Services
               </h2>
-              <p className="text-slate-500 max-w-xl mx-auto text-lg">
+              <p className="text-slate-500 max-w-xl mx-auto text-base sm:text-lg">
                 Comprehensive chimney solutions with transparent pricing and guaranteed workmanship.
               </p>
             </ScrollReveal>
@@ -155,9 +155,9 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Stats ── */}
-        <section className="py-20 bg-white border-y border-slate-100">
+        <section className="py-12 md:py-20 bg-white border-y border-slate-100">
           <div className="container mx-auto max-w-5xl px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               {[
                 { number: "5,000+", label: "Happy Customers", icon: HeartHandshake },
                 { number: "10+", label: "Years Experience", icon: Award },
@@ -168,7 +168,7 @@ export default async function LandingPage() {
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                     <stat.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                   </div>
-                  <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-1">{stat.number}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-1">{stat.number}</div>
                   <div className="text-slate-500 text-sm font-medium">{stat.label}</div>
                 </ScrollReveal>
               ))}
@@ -177,16 +177,16 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Why Choose Us ── */}
-        <section id="about" className="py-24 px-4 bg-slate-50 relative overflow-hidden">
+        <section id="about" className="py-16 md:py-24 px-4 bg-slate-50 relative overflow-hidden">
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
           <div className="container mx-auto max-w-7xl relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               {/* Left */}
               <ScrollReveal animation="slideInLeft" duration={0.8}>
                 <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                   Why Chimney Doctors
                 </span>
-                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 sm:mb-10">
                   The most trusted name in chimney services
                 </h2>
                 <div className="space-y-6">
@@ -250,14 +250,14 @@ export default async function LandingPage() {
         </section>
 
         {/* ── How It Works ── */}
-        <section id="how-it-works" className="py-24 px-4 bg-white">
+        <section id="how-it-works" className="py-16 md:py-24 px-4 bg-white">
           <div className="container mx-auto max-w-7xl">
-            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Simple Process
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">How It Works</h2>
-              <p className="text-slate-500 text-lg max-w-xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">How It Works</h2>
+              <p className="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">
                 Four simple steps to a cleaner, safer kitchen.
               </p>
             </ScrollReveal>
@@ -286,16 +286,16 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Gallery Section ── */}
-        <section id="gallery" className="py-24 px-4 bg-white border-t border-slate-100">
+        <section id="gallery" className="py-16 md:py-24 px-4 bg-white border-t border-slate-100">
           <div className="container mx-auto max-w-7xl">
-            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Our Work
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
                 Recent Projects Gallery
               </h2>
-              <p className="text-slate-500 text-lg max-w-xl mx-auto">
+              <p className="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">
                 Real photos of our chimney cleaning, installation, and repair projects across Chennai.
               </p>
             </ScrollReveal>
@@ -343,14 +343,14 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Testimonials ── */}
-        <section id="reviews" className="py-24 px-4 bg-primary">
+        <section id="reviews" className="py-16 md:py-24 px-4 bg-primary">
           <div className="container mx-auto max-w-7xl">
-            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
               <span className="inline-block bg-white/15 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Customer Reviews
               </span>
-              <h2 className="text-4xl font-extrabold tracking-tight text-white mb-3">What Our Customers Say</h2>
-              <p className="text-white/70 text-lg">Trusted by thousands of households across India.</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">What Our Customers Say</h2>
+              <p className="text-white/70 text-base sm:text-lg">Trusted by thousands of households across India.</p>
             </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -385,16 +385,16 @@ export default async function LandingPage() {
         </section>
 
         {/* ── Contact Us & Map Section ── */}
-        <section id="contact" className="py-24 px-4 bg-slate-50 border-t border-slate-100">
+        <section id="contact" className="py-16 md:py-24 px-4 bg-slate-50 border-t border-slate-100">
           <div className="container mx-auto max-w-7xl">
-            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-14">
+            <ScrollReveal animation="blurIn" duration={0.8} className="text-center mb-10 md:mb-14">
               <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
                 Get In Touch
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
                 Contact Us
               </h2>
-              <p className="text-slate-500 max-w-xl mx-auto text-lg">
+              <p className="text-slate-500 max-w-xl mx-auto text-base sm:text-lg">
                 Have questions about our service? Drop us a message, or find us on the map.
               </p>
             </ScrollReveal>
@@ -491,7 +491,7 @@ export default async function LandingPage() {
         </section>
 
         {/* ── CTA Banner ── */}
-        <section className="py-24 px-4 bg-slate-900 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-slate-900 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10"
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1585058178121-654dbbdc45e5?q=80&w=2000&auto=format&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center' }}
           />
@@ -501,10 +501,10 @@ export default async function LandingPage() {
             <span className="inline-block bg-white/10 border border-white/15 text-white/80 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
               Get Started Today
             </span>
-            <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
               Ready for a cleaner,<br />safer kitchen?
             </h2>
-            <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto">
               Book our expert chimney service today. Pay only after the work is completed to your satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -571,25 +571,25 @@ export default async function LandingPage() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-slate-800 py-6 text-center text-slate-600 text-sm">
+        <div className="border-t border-slate-800 pt-6 pb-20 sm:pb-6 text-center text-slate-600 text-sm px-4">
           © {new Date().getFullYear()} Chimney Doctors. All rights reserved. Made with ❤️ in India.
         </div>
       </footer>
 
       {/* Floating WhatsApp and Phone Call buttons */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-row sm:flex-col gap-2.5 sm:gap-3">
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/919361564650?text=Hi%20Chimney%20Doctors%2C%20I%20would%20like%20to%20book%20a%20service."
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl hover:scale-110 transition-all duration-300 group relative animate-floating-active animate-sonar"
+          className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl hover:scale-110 transition-all duration-300 group relative animate-floating-active animate-sonar"
           aria-label="Chat on WhatsApp"
         >
-          <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.488 1.459 5.416 1.46 5.515 0 10.002-4.484 10.005-9.998.002-2.67-1.037-5.18-2.92-7.067C17.265 1.662 14.755.626 12.01.626c-5.518 0-10.005 4.486-10.008 10c-.001 1.93.504 3.812 1.461 5.422L2.387 20.3l4.26-1.146zm11.233-5.321c-.3-.15-1.774-.875-2.049-.976-.275-.1-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.413-1.49-1.89-1.687-1.493-1.49-1.668-1.79-.175-.3-.018-.462.13-.611.134-.134.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.197 0-.517.074-.788.374-.27.3-1.03 1.007-1.03 2.456s1.056 2.846 1.203 3.045c.149.2 2.077 3.173 5.033 4.448.703.303 1.252.483 1.68.619.706.224 1.35.193 1.859.117.568-.085 1.774-.726 2.024-1.427.25-.7.25-1.3.175-1.427-.075-.125-.275-.2-.575-.35z" />
           </svg>
-          <span className="absolute right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+          <span className="absolute bottom-16 sm:bottom-auto sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
             Chat on WhatsApp
           </span>
         </a>
@@ -597,11 +597,11 @@ export default async function LandingPage() {
         {/* Call Button */}
         <a
           href="tel:+919361564650"
-          className="flex items-center justify-center w-14 h-14 bg-primary hover:bg-primary/95 text-white rounded-full shadow-xl hover:scale-110 transition-all duration-300 group relative animate-floating-active animate-sonar [animation-delay:1.5s]"
+          className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-primary hover:bg-primary/95 text-white rounded-full shadow-xl hover:scale-110 transition-all duration-300 group relative animate-floating-active animate-sonar [animation-delay:1.5s]"
           aria-label="Call Us"
         >
-          <Phone className="w-6 h-6" />
-          <span className="absolute right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+          <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
+          <span className="absolute bottom-16 sm:bottom-auto sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
             Call Chimney Doctors
           </span>
         </a>
