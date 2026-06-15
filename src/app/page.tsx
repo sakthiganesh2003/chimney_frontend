@@ -10,6 +10,7 @@ import { HeroSlider } from "@/components/HeroSlider"
 import { Navbar } from "@/components/Navbar"
 import { ContactForm } from "@/components/ContactForm"
 import { ScrollReveal } from "@/components/ScrollReveal"
+import { ReviewsSlider } from "@/components/ReviewsSlider"
 
 interface Service {
   id: string
@@ -352,35 +353,7 @@ export default async function LandingPage() {
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">What Our Customers Say</h2>
               <p className="text-slate-500 text-base sm:text-lg">Trusted by thousands of households across India.</p>
             </ScrollReveal>
-            <div className="flex flex-row overflow-x-auto snap-x snap-mandatory flex-nowrap md:grid md:grid-cols-3 gap-6 pb-6 scrollbar-none">
-              {[
-                { name: "Priya Sharma", location: "Mumbai", text: "Excellent service! The technician was very professional and cleaned the chimney spotlessly. Highly recommend!", rating: 5 },
-                { name: "Rahul Verma", location: "Delhi", text: "Very quick response and fair pricing. My chimney now works perfectly. Will definitely book again.", rating: 5 },
-                { name: "Anita Patel", location: "Bangalore", text: "Great experience from booking to completion. Easy website and very reliable technicians.", rating: 5 },
-              ].map((review, i) => (
-                <ScrollReveal key={i} animation="scaleUp" delay={i * 0.13} duration={0.65} className="h-full w-[85vw] sm:w-[350px] shrink-0 snap-start md:w-auto md:shrink">
-                  <div className="bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
-                    <div>
-                      <div className="flex gap-1 mb-4">
-                        {[...Array(review.rating)].map((_, j) => (
-                          <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-6">&quot;{review.text}&quot;</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                        {review.name.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-800 text-sm">{review.name}</div>
-                        <div className="text-xs text-slate-400">{review.location}</div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            <ReviewsSlider />
           </div>
         </section>
 
