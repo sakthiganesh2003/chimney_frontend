@@ -571,13 +571,13 @@ export default async function LandingPage() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-slate-800 pt-6 pb-20 sm:pb-6 text-center text-slate-600 text-sm px-4">
+        <div className="border-t border-slate-800 pt-6 pb-28 sm:pb-6 text-center text-slate-600 text-sm px-4">
           © {new Date().getFullYear()} Chimney Doctors. All rights reserved. Made with ❤️ in India.
         </div>
       </footer>
 
       {/* Floating WhatsApp and Phone Call buttons */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-row sm:flex-col gap-2.5 sm:gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2.5 sm:gap-3">
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/919361564650?text=Hi%20Chimney%20Doctors%2C%20I%20would%20like%20to%20book%20a%20service."
@@ -589,7 +589,7 @@ export default async function LandingPage() {
           <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.488 1.459 5.416 1.46 5.515 0 10.002-4.484 10.005-9.998.002-2.67-1.037-5.18-2.92-7.067C17.265 1.662 14.755.626 12.01.626c-5.518 0-10.005 4.486-10.008 10c-.001 1.93.504 3.812 1.461 5.422L2.387 20.3l4.26-1.146zm11.233-5.321c-.3-.15-1.774-.875-2.049-.976-.275-.1-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.413-1.49-1.89-1.687-1.493-1.49-1.668-1.79-.175-.3-.018-.462.13-.611.134-.134.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.197 0-.517.074-.788.374-.27.3-1.03 1.007-1.03 2.456s1.056 2.846 1.203 3.045c.149.2 2.077 3.173 5.033 4.448.703.303 1.252.483 1.68.619.706.224 1.35.193 1.859.117.568-.085 1.774-.726 2.024-1.427.25-.7.25-1.3.175-1.427-.075-.125-.275-.2-.575-.35z" />
           </svg>
-          <span className="absolute bottom-16 sm:bottom-auto sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+          <span className="absolute right-14 sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
             Chat on WhatsApp
           </span>
         </a>
@@ -601,7 +601,7 @@ export default async function LandingPage() {
           aria-label="Call Us"
         >
           <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-          <span className="absolute bottom-16 sm:bottom-auto sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+          <span className="absolute right-14 sm:right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
             Call Chimney Doctors
           </span>
         </a>
