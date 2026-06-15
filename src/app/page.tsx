@@ -94,7 +94,7 @@ export default async function LandingPage() {
               </p>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 ">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-7">
               {services?.map((service: Service, i: number) => {
                 const Icon = serviceIcons[i % serviceIcons.length]
                 const imageUrl = service.images?.[0] ||
@@ -108,41 +108,41 @@ export default async function LandingPage() {
                     className="h-full"
                   >
                     <div
-                      className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1.5 transition-all duration-400 h-full flex flex-col justify-between "
+                      className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1.5 transition-all duration-400 h-full flex flex-col justify-between"
                     >
                       <div>
                         {/* Image */}
-                        <div className="relative h-48 overflow-hidden bg-slate-100">
+                        <div className="relative h-28 xs:h-36 sm:h-48 overflow-hidden bg-slate-100">
                           <img
                             src={imageUrl}
                             alt={service.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                          <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/95 backdrop-blur-sm shadow flex items-center justify-center">
-                            <Icon className="w-4.5 h-4.5 text-primary" />
+                          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-sm shadow flex items-center justify-center">
+                            <Icon className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-primary" />
                           </div>
                         </div>
 
                         {/* Content */}
-                        <div className="p-6">
-                          <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                        <div className="p-3 sm:p-6">
+                          <h3 className="text-sm sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 group-hover:text-primary transition-colors line-clamp-2">
                             {service.name}
                           </h3>
-                          <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-5">
+                          <p className="text-slate-500 text-[11px] sm:text-sm leading-relaxed line-clamp-2 mb-2 sm:mb-5">
                             {service.description}
                           </p>
                         </div>
                       </div>
 
-                      <div className="px-6 pb-6">
-                        <div className="flex items-center justify-between border-t border-slate-100 pt-4">
-                          <span className="font-bold text-primary text-base  text-slate-900 font-mono">{service.price_estimate}</span>
+                      <div className="px-3 pb-3 sm:px-6 sm:pb-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-2.5 sm:pt-4 gap-2 sm:gap-0">
+                          <span className="font-bold text-primary text-xs sm:text-base font-mono">{service.price_estimate}</span>
                           <Link
                             href={`/services/${service.id}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary bg-primary/8 hover:bg-primary hover:text-white px-3 py-1.5 rounded-lg transition-all duration-200"
+                            className="inline-flex items-center justify-center gap-1 text-[11px] sm:text-sm font-semibold text-primary bg-primary/8 hover:bg-primary hover:text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all duration-200 w-full sm:w-auto"
                           >
-                            View Details <ArrowRight className="w-3.5 h-3.5" />
+                            Details <ArrowRight className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
                           </Link>
                         </div>
                       </div>
