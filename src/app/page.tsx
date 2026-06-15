@@ -137,7 +137,7 @@ export default async function LandingPage() {
 
                       <div className="px-3 pb-3 sm:px-6 sm:pb-6">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-2.5 sm:pt-4 gap-2 sm:gap-0">
-                          <span className="font-bold text-primary text-xs sm:text-base font-mono">{service.price_estimate}</span>
+                          <span className="font-bold text-primary text-xs sm:text-base font-mono text-slate-900">{service.price_estimate}</span>
                           <Link
                             href={`/services/${service.id}`}
                             className="inline-flex items-center justify-center gap-1 text-[11px] sm:text-sm font-semibold text-primary bg-primary/8 hover:bg-primary hover:text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all duration-200 w-full sm:w-auto"
@@ -261,7 +261,7 @@ export default async function LandingPage() {
                 Four simple steps to a cleaner, safer kitchen.
               </p>
             </ScrollReveal>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
               {[
                 { title: "Choose a Service", icon: Sparkles, desc: "Browse our services and select what your chimney needs." },
                 { title: "Book a Slot", icon: Clock, desc: "Pick a date & time that works for you — we confirm instantly." },
@@ -269,15 +269,15 @@ export default async function LandingPage() {
                 { title: "Pay After Service", icon: HeartHandshake, desc: "Pay via Cash or UPI only after you are fully satisfied." },
               ].map((step, i) => (
                 <ScrollReveal key={i} animation="flipIn" delay={i * 0.13} duration={0.7} className="h-full">
-                  <div className="relative bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/8 hover:-translate-y-1 transition-all duration-300 group h-full">
-                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary text-white text-sm font-extrabold flex items-center justify-center shadow-md">
+                  <div className="relative bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl p-4 sm:p-7 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/8 hover:-translate-y-1 transition-all duration-300 group h-full">
+                    <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary text-white text-xs sm:text-sm font-extrabold flex items-center justify-center shadow-md">
                       {i + 1}
                     </div>
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                      <step.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                      <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-white transition-colors" />
                     </div>
-                    <h3 className="font-bold text-slate-900 text-base mb-2">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                    <h3 className="font-bold text-slate-900 text-sm sm:text-base mb-1 sm:mb-2 line-clamp-1 sm:line-clamp-none">{step.title}</h3>
+                    <p className="text-slate-500 text-[11px] sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-none">{step.desc}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -301,7 +301,7 @@ export default async function LandingPage() {
             </ScrollReveal>
 
             {/* Grid of images */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
               {galleryImages.slice(0, 6).map((img, idx) => (
                 <ScrollReveal
                   key={img.name}
@@ -310,7 +310,7 @@ export default async function LandingPage() {
                   duration={0.65}
                 >
                   <div 
-                    className="relative aspect-video rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group border border-slate-200 transition-all duration-300 hover:-translate-y-1"
+                    className="relative aspect-video rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl group border border-slate-200 transition-all duration-300 hover:-translate-y-1"
                   >
                     <img
                       src={img.publicUrl}
@@ -318,10 +318,10 @@ export default async function LandingPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                      <div className="flex items-center gap-2 text-white">
-                        <Images className="w-4 h-4 text-white/80" />
-                        <span className="text-sm font-semibold tracking-wide">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2 sm:p-5">
+                      <div className="flex items-center gap-1.5 text-white">
+                        <Images className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/80" />
+                        <span className="text-[10px] sm:text-sm font-semibold tracking-wide">
                           Verified Project Completed
                         </span>
                       </div>
